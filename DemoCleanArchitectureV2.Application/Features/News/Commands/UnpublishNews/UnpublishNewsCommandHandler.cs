@@ -18,9 +18,6 @@ namespace DemoCleanArchitectureV2.Application.Features.News.Commands.UnpublishNe
             var news = await newsRepository.GetFirstOrDefaultAsync(n => n.Id == request.Id && n.IsActive)
                 ?? throw new Exception("Not found");
 
-            if (news.Status != NewsStatus.Published)
-                throw new Exception("Bài viết phải đang ở trạng thái Published");
-
             news.Status = NewsStatus.Archived;
             news.UpdatedAt = DateTime.UtcNow;
 

@@ -59,7 +59,7 @@ public class NewsRepository : BaseRepository<News, int>, INewsRepository
 
 Cơ sở dữ liệu:
 
-![Danh sách liên hệ](link here)
+![Danh sách liên hệ](https://github.com/baohc1705/DemCleanArchitecture-Modified/blob/main/screenshot/db.png)
 
 Domain entity:
 

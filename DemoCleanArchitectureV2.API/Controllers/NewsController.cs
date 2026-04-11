@@ -2,6 +2,8 @@
 using DemoCleanArchitectureV2.Application.Common.DTOs;
 using DemoCleanArchitectureV2.Application.Features.News.Commands.CreateNews;
 using DemoCleanArchitectureV2.Application.Features.News.Commands.DeleteNews;
+using DemoCleanArchitectureV2.Application.Features.News.Commands.PublishNews;
+using DemoCleanArchitectureV2.Application.Features.News.Commands.UnpublishNews;
 using DemoCleanArchitectureV2.Application.Features.News.Commands.UpdateNews;
 using DemoCleanArchitectureV2.Application.Features.News.Queries.GetNewsById;
 using MediatR;
@@ -49,6 +51,23 @@ namespace DemoCleanArchitectureV2.API.Controllers
             var data = await mediator.Send(command);
             return ApiResponse<int>.Ok(data, $"Đã update thành công news với id = {id}", StatusCodes.Status200OK);
 
+        }
+
+        [HttpPatch("{id}/publish")]
+        public async Task<ApiResponse<int>> Publish(int id, PublishNewsCommand command)
+        {
+            if (id != command.Id)
+                return ApiResponse<int>.Fail("Id không giống", StatusCodes.Status400BadRequest);
+            var data = await mediator.Send(command);
+            return ApiResponse<int>.Ok(data, $"Đã publish thành công news với id = {id}", StatusCodes.Status200OK);
+        }
+
+        [HttpPatch("{id}/unpublish")]
+        public async Task<ApiResponse<int>> Unpublish(int id)
+        {
+            
+            var data = await mediator.Send(new UnpublishNewsCommand() { Id = id}) ;
+            return ApiResponse<int>.Ok(data, $"Đã publish thành công news với id = {id}", StatusCodes.Status200OK);
         }
     }
 }

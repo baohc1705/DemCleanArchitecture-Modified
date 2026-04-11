@@ -6,7 +6,6 @@ using DemoCleanArchitectureV2.Application.Features.Menus.Commands.UpdateMenu;
 using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenus;
 using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenusDapper;
 using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenusIQueryable;
-using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenusSpec;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,13 +32,6 @@ namespace DemoCleanArchitectureV2.API.Controllers
         public async Task<IActionResult> GetMenusIQuery()
         {
             var data = await mediator.Send(new GetMenusIQueryableQuery());
-            return Ok(ApiResponse<IEnumerable<MenuDto>>.Ok(data, "Get all success"));
-        }
-
-        [HttpGet("GetMenusSpec")]
-        public async Task<IActionResult> GetMenusSpec()
-        {
-            var data = await mediator.Send(new GetMenusSpecQuery());
             return Ok(ApiResponse<IEnumerable<MenuDto>>.Ok(data, "Get all success"));
         }
 

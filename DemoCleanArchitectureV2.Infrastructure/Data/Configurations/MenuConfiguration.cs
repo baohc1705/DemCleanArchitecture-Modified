@@ -42,11 +42,11 @@ namespace DemoCleanArchitectureV2.Infrastructure.Data.Configurations
                .HasColumnName("menu_updated_by");
 
 
-            //builder.HasMany(m => m.MenuNews)
-            //    .WithOne(mn => mn.Menu)
-            //    .HasForeignKey(mn => mn.MenuId)
-            //    .HasPrincipalKey(m => m.Id)
-            //    .OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(m => m.NewsMenu)
+                .WithOne(mn => mn.Menu)
+                .HasForeignKey(mn => mn.MenuId)
+                .HasPrincipalKey(m => m.Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
         }
     }

@@ -42,19 +42,19 @@ namespace DemoCleanArchitectureV2.Infrastructure.Data.Configurations
                .HasColumnName("nm_updated_by");
 
 
-            //builder.HasOne(nm => nm.News)
-            //       .WithMany(n => n.NewsMenu)
-            //       .HasForeignKey(nm => nm.NewsId)
-            //       .HasPrincipalKey(n => n.Id)
-            //       .OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(nm => nm.News)
+                   .WithMany(n => n.NewsMenu)
+                   .HasForeignKey(nm => nm.NewsId)
+                   .HasPrincipalKey(n => n.Id)
+                   .OnDelete(DeleteBehavior.NoAction);
 
 
-            //builder.HasOne(nm => nm.Menu)
-            //       .WithMany(m => m.MenuNews)
-            //       .HasForeignKey(nm => nm.MenuId)
-            //       .HasPrincipalKey(m => m.Id)
-            //       .OnDelete(DeleteBehavior.NoAction);
-                         
+            builder.HasOne(nm => nm.Menu)
+                   .WithMany(m => m.NewsMenu)
+                   .HasForeignKey(nm => nm.MenuId)
+                   .HasPrincipalKey(m => m.Id)
+                   .OnDelete(DeleteBehavior.NoAction);
+
 
             // Index 
             builder.HasIndex(nm => nm.NewsId)

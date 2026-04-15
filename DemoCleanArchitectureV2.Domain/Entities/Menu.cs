@@ -6,6 +6,6 @@
         public string Slug { get; set; } = null!;
         public int DisplayOrder { get; set; }
         public bool IsActive { get; set; }
-        public ICollection<NewsMenu> NewsMenu { get; set; } = new List<NewsMenu>();
+        public virtual ICollection<NewsMenu> NewsMenu { get; set; } = new List<NewsMenu>(); // sử dụng vitual không đúng tinh thần clean
     }
 }

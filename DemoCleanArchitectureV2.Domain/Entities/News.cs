@@ -18,6 +18,6 @@
         public DateTime? PublishedAt { get; set; }
         public int ViewCount { get; set; }
         public bool IsActive { get; set; }
-        public ICollection<NewsMenu> NewsMenu { get; set; } = new List<NewsMenu>();
+        public virtual ICollection<NewsMenu> NewsMenu { get; set; } = new List<NewsMenu>();
     }
 }

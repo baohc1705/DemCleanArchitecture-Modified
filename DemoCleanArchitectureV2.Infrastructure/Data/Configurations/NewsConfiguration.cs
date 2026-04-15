@@ -71,11 +71,11 @@ namespace DemoCleanArchitectureV2.Infrastructure.Data.Configurations
                    .HasColumnName("new_updated_by")
                    .HasMaxLength(100);
 
-            //builder.HasMany(n => n.NewsMenu)
-            //       .WithOne(nm => nm.News)
-            //       .HasForeignKey(nm => nm.NewsId)
-            //       .HasPrincipalKey(n => n.Id)
-            //       .OnDelete(DeleteBehavior.NoAction);
+            builder.HasMany(n => n.NewsMenu)
+                   .WithOne(nm => nm.News)
+                   .HasForeignKey(nm => nm.NewsId)
+                   .HasPrincipalKey(n => n.Id)
+                   .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

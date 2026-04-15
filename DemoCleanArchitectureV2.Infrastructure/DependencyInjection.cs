@@ -12,7 +12,7 @@ namespace DemoCleanArchitectureV2.Infrastructure
         public static IServiceCollection AddInfrastructureService(this IServiceCollection services, IConfiguration configuration) 
         {
             services.AddDbContext<AppDbContext>(options => {
-                options.UseSqlServer(configuration.GetConnectionString("MenuNewsDB"));
+                options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString("MenuNewsDB"));
             });
 
             services.AddScoped<IMenuRepository, MenuRepository>();

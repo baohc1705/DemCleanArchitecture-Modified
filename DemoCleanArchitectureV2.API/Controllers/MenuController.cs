@@ -6,6 +6,7 @@ using DemoCleanArchitectureV2.Application.Features.Menus.Commands.UpdateMenu;
 using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenus;
 using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenusDapper;
 using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenusIQueryable;
+using DemoCleanArchitectureV2.Application.Features.Menus.Queries.GetMenusUseProxies;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,6 +43,13 @@ namespace DemoCleanArchitectureV2.API.Controllers
             return Ok(ApiResponse<IEnumerable<MenuDto>>.Ok(data, "Get all success"));
         }
 
+        [HttpGet("{id}/GetMenusProxies")]
+        public async Task<IActionResult> GetMenusProxies(int id)
+        {
+            var data = await mediator.Send(new GetMenusUseProxiesQuery() { Id = id});
+            return Ok(ApiResponse<MenuDto>.Ok(data, "Get all success"));
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateMenu(CreateMenuCommand command)
         {
@@ -64,5 +72,7 @@ namespace DemoCleanArchitectureV2.API.Controllers
             var data = await mediator.Send(command);
             return Ok(ApiResponse<int>.Ok(data, "delete success"));
         }
+
+
     }
 }

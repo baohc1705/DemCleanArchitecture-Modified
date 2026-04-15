@@ -5,7 +5,7 @@
         public int NewsId { get; set; }
         public int MenuId { get; set; }
         public bool IsActive { get; set; }
-        public  News News { get; set; }
-        public  Menu Menu { get; set; }
+        public virtual  News News { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }
